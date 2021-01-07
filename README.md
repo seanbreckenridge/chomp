@@ -8,7 +8,7 @@ Removes extra whitespace characters from the beginning/end of lines
 Removes lines which have just whitespace (no content)
 ```
 
-This is essentially a portable:
+This is essentially a portable (and 3x faster):
 
 ```
 sed -E -e 's/^\s*//; s/\s*$//; /^\s*$/d'
