@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func parseFlags() error {
+func parseFlags() {
 	flag.Usage = func() {
 		fmt.Fprintln(os.Stderr, `usage: chomp [-h]
 
@@ -18,14 +18,11 @@ Removes lines which have just whitespace (no content)`)
 		flag.PrintDefaults()
 	}
 	flag.Parse()
-	return nil
 }
 
 // wrapper for 'main' code, to return single err to main
 func chomp() error {
-	if err := parseFlags(); err != nil {
-		return err
-	}
+	parseFlags()
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
 		txt := strings.TrimSpace(scanner.Text())
