@@ -1,4 +1,4 @@
-### chomp
+## chomp
 
 ```
 usage: chomp [-h]
