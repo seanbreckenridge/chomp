@@ -16,9 +16,7 @@ sed -E -e 's/^\s*//; s/\s*$//; /^\s*$/d'
 
 I use this in scripts when trying to remove spaces from user input/command output.
 
----
-
-To install:
+### Install
 
 Using `go get` to put it on your `$GOBIN`:
 
@@ -32,4 +30,33 @@ cd ./chomp
 go build .
 # copy binary somewhere on your $PATH
 sudo cp ./chomp /usr/local/bin
+```
+
+### Example
+
+Typically this would be used by piping some command into it:
+
+```
+$ man -P cat rm | head
+RM(1)               User Commands              RM(1)
+
+NAME
+       rm - remove files or directories
+
+SYNOPSIS
+       rm [OPTION]... [FILE]...
+
+DESCRIPTION
+       This manual page documents the GNU version of
+```
+
+```
+$ man -P cat rm | head | chomp
+RM(1)               User Commands              RM(1)
+NAME
+rm - remove files or directories
+SYNOPSIS
+rm [OPTION]... [FILE]...
+DESCRIPTION
+This manual page documents the GNU version of
 ```
