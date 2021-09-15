@@ -18,9 +18,9 @@ sed -E -e 's/^\s*//; s/\s*$//; /^\s*$/d'
 
 ### Install
 
-Using `go get` to put it on your `$GOBIN`:
+Using `go install` to put it on your `$GOBIN`:
 
-`go get github.com/seanbreckenridge/chomp`
+`go install github.com/seanbreckenridge/chomp@latest`
 
 Manually:
 
