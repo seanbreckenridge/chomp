@@ -22,7 +22,7 @@ Removes lines which have just whitespace (no content)`)
 		fmt.Fprintln(os.Stderr, "\nFlags:")
 		flag.PrintDefaults()
 	}
-	maxCapacity := flag.Int("max-capacity", 64, "Maximum capacity for each line in kilobytes (default 64K)")
+	maxCapacity := flag.Int("max-capacity", 64, "Maximum capacity for each line in kilobytes")
 	flag.Parse()
 	return &Flags{
 		maxCapacity: *maxCapacity,
