@@ -1,11 +1,15 @@
 ## chomp
 
 ```
-usage: chomp [-h]
+usage: chomp [-h] [FLAGS]
 
 Receives input from STDIN
 Removes extra whitespace characters from the beginning/end of lines
 Removes lines which have just whitespace (no content)
+
+Flags:
+  -max-capacity int
+    	Maximum capacity for each line in kilobytes (default 64K) (default 64)
 ```
 
 This is essentially a portable (and 3x faster):
