@@ -9,7 +9,7 @@ Removes lines which have just whitespace (no content)
 
 Flags:
   -max-capacity int
-    	Maximum capacity for each line in kilobytes (default 64)
+    	Maximum capacity for each line in kilobytes. Can also set through CHOMP_MAX_CAPACITY environment variable. (default 64)
 ```
 
 This is essentially a portable (and 3x faster):

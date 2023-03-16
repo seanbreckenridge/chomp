@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -22,7 +23,12 @@ Removes lines which have just whitespace (no content)`)
 		fmt.Fprintln(os.Stderr, "\nFlags:")
 		flag.PrintDefaults()
 	}
-	maxCapacity := flag.Int("max-capacity", 64, "Maximum capacity for each line in kilobytes")
+	maxCapacityStr := os.Getenv("CHOMP_MAX_CAPACITY")
+	maxCapacityInt := 64
+	if conv, err := strconv.Atoi(maxCapacityStr); err == nil {
+		maxCapacityInt = conv
+	}
+	maxCapacity := flag.Int("max-capacity", maxCapacityInt, "Maximum capacity for each line in kilobytes. Can also set through CHOMP_MAX_CAPACITY environment variable.")
 	flag.Parse()
 	return &Flags{
 		maxCapacity: *maxCapacity,
@@ -44,7 +50,7 @@ func chomp() error {
 	}
 	if err := scanner.Err(); err != nil {
 		if err == bufio.ErrTooLong {
-			return fmt.Errorf("line too long (max %dK). You can increase this limit with the -max-capacity flag", flags.maxCapacity)
+			return fmt.Errorf("line too long (max %dK). You can increase this limit with the -max-capacity flag or CHOMP_MAX_CAPACITY environment variable", flags.maxCapacity)
 		}
 		return err
 	}
